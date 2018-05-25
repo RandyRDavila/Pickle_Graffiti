@@ -73,10 +73,10 @@ def main():
         print(str(i)+'.', graph_families[x])
         i +=1
         print()
-    print('----------------------------------------')
+    print('---------------------------------------------')
     family = graph_families[int(input('Graph family: '))]
     print()
-    print('----------------------------------------')
+    print('---------------------------------------------')
     print()
 
 
