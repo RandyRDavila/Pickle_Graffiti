@@ -11,3 +11,6 @@ import Pickle_Graffiti.classes
 
 from Pickle_Graffiti.TxGraffiti import *
 import Pickle_Graffiti.TxGraffiti
+
+from Pickle_Graffiti.graph_data import *
+import Pickle_Graffiti.graph_data

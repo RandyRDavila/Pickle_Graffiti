@@ -38,7 +38,7 @@ def conjecture_db(target, family):
     conj_dict = {'upper': make_conjectures(target, 'upper', family),
                 'lower': make_conjectures(target, 'lower', family)
                 }
-    pickle_out = open(f'{target}_{family}_conjectures', 'wb')
+    pickle_out = open(f'graph_data/{target}_{family}_conjectures', 'wb')
     pickle.dump(conj_dict, pickle_out)
     pickle_out.close()
     return None

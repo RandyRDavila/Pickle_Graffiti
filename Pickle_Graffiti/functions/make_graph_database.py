@@ -39,7 +39,7 @@ def make_graph_db(graph_type):
         print('Graph', counter, 'of', size)
         counter += 1
 
-    pickle_out = open(graph_type, 'wb')
+    pickle_out = open('graph_data/'+graph_type, 'wb')
     pickle.dump(pickle_dict, pickle_out)
     pickle_out.close()
 

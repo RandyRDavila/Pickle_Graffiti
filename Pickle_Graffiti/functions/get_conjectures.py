@@ -28,7 +28,7 @@ def get_conjectures(target, family):
            The dictionary with key values equal to conjectured inequalities
            and whose values are associated with a given conjecture.
     """
-    with open(f'{target}_{family}_conjectures', 'rb') as pickle_file:
+    with open(f'graph_data/{target}_{family}_conjectures', 'rb') as pickle_file:
         db = pickle.load(pickle_file)
     return db
 
