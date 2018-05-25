@@ -8,3 +8,7 @@ import Pickle_Graffiti.graph_txt_files
 
 from Pickle_Graffiti.classes import *
 import Pickle_Graffiti.classes
+
+
+from Pickle_Graffiti.TxGraffiti import *
+import Pickle_Graffiti.TxGraffiti

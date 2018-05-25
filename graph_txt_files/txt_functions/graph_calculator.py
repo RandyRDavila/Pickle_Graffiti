@@ -1,13 +1,13 @@
 import networkx as nx
 import grinpy as GPY
-from graph_txt_functions.functions.triameter import triameter 
-from graph_txt_functions.functions.domination import domination_number, total_domination_number
-from graph_txt_functions.functions.domination import independent_domination_number
-from graph_txt_functions.functions.chromatic_number import chromatic_number
-from graph_txt_functions.functions.matching_number import matching_number
-from graph_txt_functions.functions.vertex_cover_number import vertex_cover_number
-from graph_txt_functions.functions.independence_number import independence_number
-from graph_txt_functions.functions.topological_indicies import *
+from graph_txt_files.txt_functions.triameter import triameter
+from graph_txt_files.txt_functions.domination import domination_number, total_domination_number
+from graph_txt_files.txt_functions.domination import independent_domination_number
+from graph_txt_files.txt_functions.chromatic_number import chromatic_number
+from graph_txt_files.txt_functions.matching_number import matching_number
+from graph_txt_files.txt_functions.vertex_cover_number import vertex_cover_number
+from graph_txt_files.txt_functions.independence_number import independence_number
+from graph_txt_files.txt_functions.topological_indicies import *
 
 
 
@@ -37,29 +37,29 @@ def calc(G, invariant):
         return GPY.residue(G)
     elif invariant == 'k_residual_index':
         return GPY.k_residual_index(G)
-    
+
     elif invariant == 'connected_zero_forcing_number':
         return GPY.connected_zero_forcing_number(G)
     elif invariant == 'total_zero_forcing_number':
         return GPY.total_zero_forcing_number(G)
     elif invariant == 'zero_forcing_number':
         return GPY.zero_forcing_number(G)
-    
+
     elif invariant == 'diameter':
         return nx.diameter(G)
     elif invariant == 'radius':
         return nx.radius(G)
-    
+
     elif invariant == 'order':
         return nx.number_of_nodes(G)
     elif invariant == 'size':
         return nx.number_of_edges(G)
-    
+
     elif invariant == 'min_degree':
         return GPY.min_degree(G)
     elif invariant == 'max_degree':
         return GPY.max_degree(G)
-    
+
     elif invariant == 'number_of_min_degree_nodes':
         return GPY.number_of_min_degree_nodes(G)
     elif invariant == 'number_of_degree_one_nodes':
@@ -76,9 +76,9 @@ def calc(G, invariant):
         return triameter(G)
     elif invariant == 'vertex_cover_number':
         return vertex_cover_number(G)
-    
-    
-    
+
+
+
     elif invariant == 'randic_index':
         return randic_index(G)
     elif invariant == 'augmented_randic_index':
@@ -87,12 +87,11 @@ def calc(G, invariant):
         return harmonic_index(G)
     elif invariant == 'atom_bond_connectivity_index':
         return atom_bond_connectivity_index(G)
-    
+
     elif invariant == 'sum_connectivity_index':
         return sum_connectivity_index(G)
-    
-      
+
+
     else:
         print('ERROR')
         return False
-    

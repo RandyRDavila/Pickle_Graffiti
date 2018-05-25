@@ -1,10 +1,22 @@
 
+# -*- coding: utf-8 -*-
+
+#    Copyright (C) 2018 by
+#    Randy Davila <davilar@uhd.edu>
+#    BSD license.
+#
+# Authors: Randy Davila <davilar@uhd.edu>
+
+"""
+            Functions that generate possible expressions for which a given
+            graph invariant will be tested against.
+"""
 
 
 __all__ =['one_ratio', 'one_addition', 'one_operation']
 
 def one_ratio(x):
-    return [x, 
+    return [x,
             x+' /2',
             x+' /3',
             x+' /4',
@@ -13,11 +25,12 @@ def one_ratio(x):
             x+' / ( radius + 1)',
             x+' * ( radius + 2)',
             x+' / triameter',
+            x+' * triameter',
             'order / '+x,
             'size / '+x,
             '2 * '+x+' /3',
             '3 * '+x+' /2',
-            '2 * '+x+' /5', 
+            '2 * '+x+' /5',
             '5 * '+x+' /2',
             '3 * '+x+' /4',
             '4 * '+x+' /3',
@@ -27,7 +40,7 @@ def one_ratio(x):
             '3 * '+x+' /8',
             '7 * '+x+' /4'
             ]
-    
+
 def one_addition(x):
     return ['( '+x+' - 1)',
             '( '+x+' + 1)',
@@ -38,7 +51,6 @@ def one_addition(x):
             '( '+x+' + 4)',
             '( '+x+' - 4)',
             '( '+x+' + order )'
-            
             ]
 
 
@@ -55,15 +67,5 @@ def one_operation(x):
         result.append(y)
         for w in one_ratio(y):
             result.append(w)
-    
+
     return result
-        
-    
-
-
-
-
-
-
-
-

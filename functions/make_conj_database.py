@@ -1,45 +1,44 @@
 from classes.conjecture_class import Conjecture
 from functions.expressions import one_operation
+from functions.make_graph_database import exceptions
 from graph_txt_files.txt_functions.graph_property_names import property_names
 import pickle
 
-def make_possible_expressions(target):
+__all__ = ['make_conjectures',
+           'conjecture_db']
+
+def make_expressions(target, family):
     temp = []
-    for name in property_names:
+    if family == 'cubic':
+        property_names_valid = [x for x in property_names if x not in exceptions]
+    else:
+        property_names_valid = property_names
+
+    for name in property_names_valid:
         if name != target:
             for expr in one_operation(name):
                 temp.append(expr)
     return temp
 
-def make_possible_inequalities(target, inequality):
+def make_inequalities(target, inequality, family):
     temp = []
-    for x in make_possible_expressions(target):
+    for x in make_expressions(target, family):
         temp.append([target, inequality, x])
     return temp
 
-
-def make_conjecture_dict(target, inequality, family):
-    main_dict = dict()
-    for x in make_possible_inequalities(target, inequality):
-
+def make_conjectures(target, inequality, family):
+    main_list = []
+    for x in make_inequalities(target, inequality, family):
         conj = Conjecture(x[0],x[1],x[2], family)
-        D = {'name': conj.get_string()}
-        if conj.conjecture_check()[0] == True:
-            D['target'] = target
-            D['inequality'] = inequality
-            D['expression'] = conj.get_expression()
-            D['family'] = family
-            D['touch'] = conj.conjecture_check()[1]
-            D['sharp_examples'] = conj.conjecture_check()[2]
-            D['expression_values'] = conj.conjecture_check()[3]
+        if conj.conjecture_check_sharp() == True:
+            main_list.append(conj)
+    return sorted(main_list, key = lambda k: k.touch(), reverse =True)
 
-
-            main_dict[conj.get_string()] = D
-    return main_dict
-
-
-def initial_conjecture_db(target, inequality, family):
-    pickle_out = open(target+'_'+family+'_conjectures', 'wb')
-    pickle.dump(make_conjecture_dict(target, inequality, family),pickle_out)
+def conjecture_db(target, family):
+    conj_dict = {'upper': make_conjectures(target, 'upper', family),
+                'lower': make_conjectures(target, 'lower', family)
+                }
+    pickle_out = open(f'{target}_{family}_conjectures', 'wb')
+    pickle.dump(conj_dict, pickle_out)
     pickle_out.close()
     return None
