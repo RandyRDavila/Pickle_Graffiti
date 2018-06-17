@@ -6,7 +6,7 @@
 ### What is it?
 Pickle_Graffiti is a automated conjecturing program. This program relies on
 both heuristics and user interaction in order to produce graph theoretic
-conjectures. This program has been heavily inspired by Siemion Fajtlowicz's Graffit and Ermelinda DeLaVina's Graffiti.pc.
+conjectures. This program has been heavily inspired by Siemion Fajtlowicz's Graffiti and Ermelinda DeLaVina's Graffiti.pc.
 
 NP-hard invariants in this version include:
 
